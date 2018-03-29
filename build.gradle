@@ -1,0 +1,36 @@
+// Apply the java plugin to add support for Java
+apply plugin: 'java'
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+group = 'com.azzayork'
+
+dependencies {
+
+    def springVersion = '5.0.1.RELEASE'
+    def igniteVersion = '2.4.0'
+    def slf4jVersion = '1.7.25'
+    def log4jVersion = '2.10.0'
+
+    compileOnly "org.projectlombok:lombok:+"
+
+    compile "org.apache.ignite:ignite-core:${igniteVersion}"
+    compile "org.apache.ignite:ignite-indexing:${igniteVersion}"
+    compile "org.apache.ignite:ignite-spring:${igniteVersion}"
+
+    compile "org.springframework:spring-jms:${springVersion}"
+
+    compile "org.slf4j:slf4j-api:${slf4jVersion}"
+    compile "org.apache.logging.log4j:log4j-core:${log4jVersion}"
+    compile "org.apache.logging.log4j:log4j-slf4j-impl:${log4jVersion}"
+
+    testCompile 'junit:junit:4.12'
+    testCompile "org.projectlombok:lombok:+"
+}
+
